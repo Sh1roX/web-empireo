@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libros — Empíreo</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">Empíreo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="sinopsis.html">Sinopsis</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="personajes.html">Personajes</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <h1>Los Libros</h1>
+    <p>Novelas que forman un mundo sin igual</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">La saga</h2>
+    <p class="section-subtitle">Rebecca Yarros · Montena / Planeta</p>
+    <div class="divider"></div>
+
+    <div class="books-grid">
+
+      <!-- Libro 1 -->
+      <div class="book-card">
+        <div class="book-cover">
+          <img src="../img/alas-de-sangre.webp" alt="Portada de Alas de Sangre"
+               onerror="this.parentElement.innerHTML=bookPlaceholder('01','Alas de Sangre')">
+          <div class="book-cover-overlay"></div>
+          <span class="book-badge">Libro 01</span>
+        </div>
+        <div class="book-info">
+          <p class="book-original">Fourth Wing</p>
+          <h3>Alas de Sangre</h3>
+          <p>El inicio de todo. Violet Sorrengail cruza el parapeto del Colegio de guerra Basgiath y descubre que sobrevivir requiere más que inteligencia: requiere aliados inesperados y dragones que desafían toda lógica.</p>
+          <div class="book-meta">
+            <span class="book-year">2023</span>
+            <span>Rebecca Yarros</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Libro 2 -->
+      <div class="book-card">
+        <div class="book-cover">
+          <img src="../img/alas-de-hierro.webp" alt="Portada de Alas de Hierro"
+               onerror="this.parentElement.innerHTML=bookPlaceholder('02','Alas de Hierro')">
+          <div class="book-cover-overlay"></div>
+          <span class="book-badge">Libro 02</span>
+        </div>
+        <div class="book-info">
+          <p class="book-original">Iron Flame</p>
+          <h3>Alas de Hierro</h3>
+          <p>Los secretos de Navarre salen a la luz y ningún bando sale ileso. Violet debe elegir entre la lealtad al sistema que la formó o la verdad que amenaza con destruirlo.</p>
+          <div class="book-meta">
+            <span class="book-year">2023</span>
+            <span>Rebecca Yarros</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Libro 3 -->
+      <div class="book-card">
+        <div class="book-cover">
+          <img src="../img/alas-de-onix.webp" alt="Portada de Alas de Ónix"
+               onerror="this.parentElement.innerHTML=bookPlaceholder('03','Alas de Ónix')">
+          <div class="book-cover-overlay"></div>
+          <span class="book-badge">Libro 03</span>
+        </div>
+        <div class="book-info">
+          <p class="book-original">Onyx Storm</p>
+          <h3>Alas de Ónix</h3>
+          <p>La oscuridad avanza, los jinetes caen y el sacrificio se convierte en la única moneda de cambio. 3er libro de una saga ultra atrapante</p>
+          <div class="book-meta">
+            <span class="book-year">2025</span>
+            <span>Rebecca Yarros</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Empíreo</p>
+    <p>Proyecto web fan · Basado en la saga de Rebecca Yarros</p>
+  </footer>
+
+  <script>
+    function bookPlaceholder(number, title) {
+      return `<div class="book-cover-placeholder">
+        <span class="placeholder-number">${number}</span>
+        <div class="placeholder-line"></div>
+        <span class="placeholder-title">${title}</span>
+      </div>
+      <div class="book-cover-overlay"></div>
+      <span class="book-badge">Libro ${number}</span>`;
+    }
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

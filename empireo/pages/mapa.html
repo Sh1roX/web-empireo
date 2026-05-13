@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa — Empíreo</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">Empíreo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="sinopsis.html">Sinopsis</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="personajes.html">Personajes</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <h1>Mapa del Mundo</h1>
+    <p>Explorá el continente de Navarre y sus territorios</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Navarre</h2>
+    <p class="section-subtitle">Pasá el cursor sobre el mapa para explorar los detalles</p>
+    <div class="divider"></div>
+
+    <div class="map-container">
+      <img src="../img/Mapa.jpg"
+           alt="Mapa del mundo de Empíreo"
+           class="map"
+           id="map">
+    </div>
+    <p class="map-info" id="mapInfo">Mueve el cursor sobre el mapa para hacer zoom</p>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Empíreo</p>
+    <p>Proyecto web fan · Basado en la saga de Rebecca Yarros</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
