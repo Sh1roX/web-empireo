@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Empíreo</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">Empíreo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="sinopsis.html">Sinopsis</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="personajes.html">Personajes</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <h1>Contacto</h1>
+    <p>¿Querés compartir algo sobre la saga? Escribinos</p>
+  </div>
+
+  <div class="section">
+    <div class="contact-layout">
+
+      <!-- Info lateral -->
+      <aside class="contact-aside">
+        <h2 class="section-title">Hablemos</h2>
+        <div class="divider"></div>
+        <p class="contact-aside-text">
+          Este es un proyecto fan de la saga <em>Empíreo</em> de Rebecca Yarros.
+          Si tenés consultas, correcciones, o simplemente querés hablar de dragones
+          y jinetes, mandanos un mensaje.
+        </p>
+
+        <ul class="contact-info-list">
+          <li>
+            <span class="contact-info-icon">✦</span>
+            <span>Respondemos en 24–48 hs</span>
+          </li>
+          <li>
+            <span class="contact-info-icon">✦</span>
+            <span>Proyecto sin fines de lucro</span>
+          </li>
+          <li>
+            <span class="contact-info-icon">✦</span>
+            <span>Fans ayudando fans</span>
+          </li>
+        </ul>
+
+        <blockquote class="contact-quote">
+          "Los mejores aliados son aquellos que aparecen cuando menos los esperás."
+        </blockquote>
+      </aside>
+
+      <!-- Formulario -->
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group" id="group-nombre">
+              <label for="nombre">Nombre <span class="required">*</span></label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre"
+                autocomplete="name"
+                maxlength="80">
+              <span class="field-error" id="error-nombre"></span>
+            </div>
+
+            <div class="form-group" id="group-email">
+              <label for="email">Correo electrónico <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="ejemplo@correo.com"
+                autocomplete="email"
+                maxlength="120">
+              <span class="field-error" id="error-email"></span>
+            </div>
+          </div>
+
+          <div class="form-group" id="group-asunto">
+            <label for="asunto">Asunto <span class="required">*</span></label>
+            <input
+              type="text"
+              id="asunto"
+              name="asunto"
+              placeholder="¿Sobre qué querés escribir?"
+              maxlength="120">
+            <span class="field-error" id="error-asunto"></span>
+          </div>
+
+          <div class="form-group" id="group-mensaje">
+            <label for="mensaje">Mensaje <span class="required">*</span></label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="6"
+              placeholder="Escribí tu mensaje acá..."
+              maxlength="2000"></textarea>
+            <div class="textarea-footer">
+              <span class="field-error" id="error-mensaje"></span>
+              <span class="char-count" id="charCount">0 / 2000</span>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit" id="submitBtn">
+            <span class="submit-text">Enviar mensaje</span>
+            <span class="submit-icon">→</span>
+          </button>
+
+        </form>
+
+        <!-- Mensaje de éxito -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✦</div>
+          <h3>¡Mensaje enviado!</h3>
+          <p>Gracias por escribirnos. Te respondemos en las próximas 24–48 horas.</p>
+          <button class="success-reset" id="resetBtn">Enviar otro mensaje</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Empíreo</p>
+    <p>Proyecto web fan · Basado en la saga de Rebecca Yarros</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/contacto.js"></script>
+</body>
+</html>

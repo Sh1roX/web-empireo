@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personajes — Empíreo</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">Empíreo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="sinopsis.html">Sinopsis</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="personajes.html">Personajes</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <h1>Personajes</h1>
+    <p>Los jinetes, dragones y aliados de Basgiath</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Galería</h2>
+    <p class="section-subtitle">Hacé click en cada personaje para saber más</p>
+    <div class="divider"></div>
+
+    <div class="gallery-grid">
+
+      <!-- Violet -->
+      <div class="character-card" data-modal="violet" tabindex="0" role="button" aria-label="Ver más sobre Violet Sorrengail">
+        <div class="character-img-wrap">
+          <img src="../img/violet.jpg" alt="Violet Sorrengail"
+               onerror="this.parentElement.innerHTML=placeholderSVG('V')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Protagonista</span>
+        </div>
+        <div class="character-info">
+          <h3>Violet Sorrengail</h3>
+          <p class="character-alias">La Chica de los Libros</p>
+          <p>Jinete de dos dragones. Hija de la Generala. Destinada a cambiar todo.</p>
+        </div>
+      </div>
+
+      <!-- Xaden -->
+      <div class="character-card" data-modal="xaden" tabindex="0" role="button" aria-label="Ver más sobre Xaden Riorson">
+        <div class="character-img-wrap">
+          <img src="../img/xaden.jpg" alt="Xaden Riorson"
+               onerror="this.parentElement.innerHTML=placeholderSVG('X')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Comandante</span>
+        </div>
+        <div class="character-info">
+          <h3>Xaden Riorson</h3>
+          <p class="character-alias">El Comandante de Ala</p>
+          <p>Hijo del rebelde más famoso de Navarre. Frío, leal, y con secretos que pesan toneladas.</p>
+        </div>
+      </div>
+
+      <!-- Liam -->
+      <div class="character-card" data-modal="liam" tabindex="0" role="button" aria-label="Ver más sobre Liam Mairi">
+        <div class="character-img-wrap">
+          <img src="../img/liam.jpg" alt="Liam Mairi"
+               onerror="this.parentElement.innerHTML=placeholderSVG('L')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Jinete</span>
+        </div>
+        <div class="character-info">
+          <h3>Liam Mairi</h3>
+          <p class="character-alias">El Guardián</p>
+          <p>Guardia asignado para proteger a Violet. Valiente, noble, y con un corazón inquebrantable.</p>
+        </div>
+      </div>
+
+      <!-- Rhiannon -->
+      <div class="character-card" data-modal="rhiannon" tabindex="0" role="button" aria-label="Ver más sobre Rhiannon Matthias">
+        <div class="character-img-wrap">
+          <img src="../img/rhiannon.jpg" alt="Rhiannon Matthias"
+               onerror="this.parentElement.innerHTML=placeholderSVG('R')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Jinete</span>
+        </div>
+        <div class="character-info">
+          <h3>Rhiannon Matthias</h3>
+          <p class="character-alias">Rhi</p>
+          <p>La mejor amiga de Violet. Astuta, leal y con una determinación que no conoce límites.</p>
+        </div>
+      </div>
+
+      <!-- Dain -->
+      <div class="character-card" data-modal="dain" tabindex="0" role="button" aria-label="Ver más sobre Dain Aetos">
+        <div class="character-img-wrap">
+          <img src="../img/dain.webp" alt="Dain Aetos"
+               onerror="this.parentElement.innerHTML=placeholderSVG('D')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Líder</span>
+        </div>
+        <div class="character-info">
+          <h3>Dain Aetos</h3>
+          <p class="character-alias">Líder de Cuadrante</p>
+          <p>Amigo de infancia de Violet. Inteligente y protector, aunque no siempre en el bando correcto.</p>
+        </div>
+      </div>
+
+      <!-- Andarna -->
+      <div class="character-card" data-modal="andarna" tabindex="0" role="button" aria-label="Ver más sobre Andarna">
+        <div class="character-img-wrap">
+          <img src="../img/andarna.jpg" alt="Andarna"
+               onerror="this.parentElement.innerHTML=placeholderSVG('A')">
+          <div class="character-overlay"></div>
+          <span class="character-role-badge">Dragona</span>
+        </div>
+        <div class="character-info">
+          <h3>Andarna</h3>
+          <p class="character-alias">La Dragona Dorada</p>
+          <p>Más pequeña, más joven, y con un poder que ningún libro de historia puede explicar.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="characterModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" aria-label="Cerrar">&times;</button>
+      <img class="modal-img" id="modal-img" src="" alt="" style="display:none">
+      <div class="modal-body">
+        <h2 id="modal-name"></h2>
+        <p class="modal-alias" id="modal-alias"></p>
+        <p id="modal-desc"></p>
+        <div class="modal-tags" id="modal-tags"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Empíreo</p>
+    <p>Proyecto web fan · Basado en la saga de Rebecca Yarros</p>
+  </footer>
+
+  <script>
+    // Helper: SVG placeholder con inicial cuando no hay imagen
+    function placeholderSVG(letter) {
+      return `
+        <div class="character-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" stroke="#c9a84c" stroke-width="1"/>
+            <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+                  font-family="Cinzel,serif" font-size="28" fill="#c9a84c">${letter}</text>
+          </svg>
+          <span style="font-size:.75rem;letter-spacing:.1em;color:#7a5f2a;font-family:Cinzel,serif;">SIN IMAGEN</span>
+        </div>
+        <div class="character-overlay"></div>`;
+    }
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

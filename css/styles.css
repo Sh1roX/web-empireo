@@ -1,0 +1,1019 @@
+/* ============================================
+   EMPÍREO — Estilos Globales
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* === Variables === */
+:root {
+  --bg:           #080810;
+  --bg-card:      #10101e;
+  --bg-header:    #0c0c18;
+  --accent:       #c9a84c;
+  --accent-dim:   #7a5f2a;
+  --text:         #e8e0d0;
+  --text-muted:   #8a8070;
+  --border:       rgba(201,168,76,.18);
+  --glow:         rgba(201,168,76,.25);
+  --radius:       10px;
+  --transition:   .3s ease;
+}
+
+/* === Reset === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', serif;
+  letter-spacing: .05em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: #fff; }
+
+img { display: block; max-width: 100%; }
+
+/* ============================================
+   HEADER / NAV
+   ============================================ */
+header {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .1em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ============================================
+   HERO (solo index.html)
+   ============================================ */
+.hero {
+  height: 88vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 60%, #1a1020 0%, var(--bg) 70%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(80,60,120,.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  opacity: .9;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 60px rgba(201,168,76,.3);
+  margin-bottom: 28px;
+}
+
+.hero-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 520px;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 12px 36px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background var(--transition), color var(--transition);
+}
+.hero-cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ============================================
+   PAGE HERO (páginas internas)
+   ============================================ */
+.page-hero {
+  padding: 70px 20px 50px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #0f0f1a 0%, var(--bg) 100%);
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--accent);
+}
+
+.page-hero p {
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* ============================================
+   SECCIONES GENÉRICAS
+   ============================================ */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 24px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 40px;
+  font-size: .98rem;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--accent-dim);
+  margin: 16px 0 36px;
+}
+
+/* ============================================
+   CARDS (libros)
+   ============================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 20px var(--glow);
+  border-color: var(--accent-dim);
+}
+
+.card-number {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  color: var(--accent-dim);
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: .95rem;
+}
+
+/* ============================================
+   GALERÍA DE PERSONAJES
+   ============================================ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.character-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.character-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.6), 0 0 24px var(--glow);
+  border-color: var(--accent-dim);
+}
+
+.character-img-wrap {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #14141f;
+}
+
+.character-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+  filter: grayscale(20%);
+}
+
+.character-card:hover .character-img-wrap img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+/* Placeholder cuando no hay imagen */
+.character-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #10101e 0%, #1a1a2e 100%);
+  color: var(--accent-dim);
+  gap: 10px;
+}
+
+.character-placeholder svg {
+  opacity: .4;
+}
+
+.character-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,16,.85) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.character-card:hover .character-overlay { opacity: 1; }
+
+.character-role-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(8,8,16,.75);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.character-info {
+  padding: 18px 20px 22px;
+}
+
+.character-info h3 {
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.character-info .character-alias {
+  font-style: italic;
+  color: var(--accent);
+  font-size: .88rem;
+  margin-bottom: 8px;
+}
+
+.character-info p {
+  color: var(--text-muted);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+/* Modal de personaje */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+  animation: modalIn .3s ease;
+  position: relative;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(.94) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)  translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition);
+}
+.modal-close:hover { color: #fff; }
+
+.modal-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  filter: grayscale(10%);
+}
+
+.modal-body {
+  padding: 28px;
+}
+
+.modal-body h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.modal-body .modal-alias {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-size: .95rem;
+}
+
+.modal-body p {
+  color: var(--text);
+  font-size: .98rem;
+  line-height: 1.7;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.modal-tag {
+  background: rgba(201,168,76,.1);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: .75rem;
+  letter-spacing: .1em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Cinzel', serif;
+}
+
+/* ============================================
+   MAPA
+   ============================================ */
+.map-container {
+  position: relative;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.map {
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+  transition: transform .15s ease;
+  transform-origin: center center;
+  display: block;
+  margin: auto;
+}
+
+.map-info {
+  margin-top: 12px;
+  font-size: .9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   SINOPSIS
+   ============================================ */
+.sinopsis-text {
+  max-width: 760px;
+  margin: auto;
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.sinopsis-text p + p {
+  margin-top: 18px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-header);
+  color: var(--text-muted);
+  font-size: .88rem;
+}
+
+footer .footer-logo {
+  font-family: 'Cinzel', serif;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  letter-spacing: .1em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--bg-header);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .nav-links li { list-style: none; }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 30px;
+    border-radius: 0;
+  }
+
+  .hamburger { display: flex; }
+
+  header { position: relative; }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+
+/* ============================================
+   CARDS DE LIBROS (con portada)
+   ============================================ */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.book-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.6), 0 0 28px var(--glow);
+  border-color: var(--accent-dim);
+}
+
+.book-cover {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: #10101e;
+  flex-shrink: 0;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease, filter .5s ease;
+  filter: grayscale(15%);
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
+.book-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(160deg, #0e0e20 0%, #1a1228 100%);
+  padding: 20px;
+  text-align: center;
+}
+
+.book-cover-placeholder .placeholder-number {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  opacity: .15;
+  color: var(--accent);
+}
+
+.book-cover-placeholder .placeholder-title {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  color: var(--accent-dim);
+  line-height: 1.4;
+}
+
+.book-cover-placeholder .placeholder-line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-dim);
+  opacity: .5;
+}
+
+.book-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(8,8,16,.8);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.book-cover-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(8,8,16,.7) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.book-card:hover .book-cover-overlay { opacity: 1; }
+
+.book-info {
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.book-info .book-original {
+  font-size: .78rem;
+  letter-spacing: .1em;
+  color: var(--accent-dim);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 6px;
+}
+
+.book-info h3 {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.book-info p {
+  color: var(--text-muted);
+  font-size: .93rem;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.book-meta {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  letter-spacing: .06em;
+}
+
+.book-meta .book-year { color: var(--accent-dim); }
+
+/* ============================================
+   CONTACTO
+   ============================================ */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* --- Aside info --- */
+.contact-aside-text {
+  color: var(--text-muted);
+  font-size: .98rem;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.contact-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.contact-info-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: .93rem;
+}
+
+.contact-info-icon {
+  color: var(--accent);
+  font-size: .75rem;
+  flex-shrink: 0;
+}
+
+.contact-quote {
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: .92rem;
+  line-height: 1.65;
+}
+
+/* --- Formulario --- */
+.contact-form-wrap {
+  position: relative;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.form-group:focus-within label {
+  color: var(--accent);
+}
+
+.required {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: .6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-dim);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.08);
+}
+
+/* Estado error */
+.field--error input,
+.field--error textarea {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192,57,43,.1);
+}
+
+.field--error label {
+  color: #c0392b !important;
+}
+
+.field-error {
+  font-size: .8rem;
+  color: #e74c3c;
+  min-height: 1rem;
+  line-height: 1.3;
+  display: block;
+}
+
+/* Pie del textarea */
+.textarea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.char-count {
+  font-size: .75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: .05em;
+}
+
+.char-count--warn {
+  color: #e67e22;
+}
+
+/* Botón enviar */
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 13px 38px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.form-submit:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+
+.form-submit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.submit-icon {
+  font-size: 1rem;
+  transition: transform var(--transition);
+}
+
+.form-submit:hover:not(:disabled) .submit-icon {
+  transform: translateX(4px);
+}
+
+/* --- Mensaje de éxito --- */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 60px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  animation: fadeIn .4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+  font-size: 2.2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.form-success h3 {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.form-success p {
+  color: var(--text-muted);
+  max-width: 380px;
+  font-size: .97rem;
+  line-height: 1.6;
+}
+
+.success-reset {
+  margin-top: 8px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 9px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.success-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Responsive --- */
+@media (max-width: 860px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
