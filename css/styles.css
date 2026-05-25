@@ -444,6 +444,7 @@ header {
   max-height: 320px;
   object-fit: cover;
   filter: grayscale(10%);
+  display: block;
 }
 
 .modal-body {
