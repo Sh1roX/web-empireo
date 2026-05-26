@@ -442,9 +442,9 @@ header {
 .modal-img {
   display: block;
   width: 100%;
-  max-height: none;
-  object-fit: contain;
-  background: #080810;
+  max-height: 350px;
+  object-fit: cover;
+  object-position: center 15%;
   filter: grayscale(10%);
 }
 
