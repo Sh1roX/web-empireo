@@ -440,11 +440,12 @@ header {
 .modal-close:hover { color: #fff; }
 
 .modal-img {
-  width: 100%;
-  max-height: 320px;
-  object-fit: cover;
-  filter: grayscale(10%);
   display: block;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center 10%;
+  filter: grayscale(10%);
 }
 
 .modal-body {
