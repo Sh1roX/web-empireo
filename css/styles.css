@@ -442,11 +442,11 @@ header {
 .modal-img {
   display: block;
   width: 100%;
-  max-height: 350px;
+  max-height: 35vh;       /* ← 40% de la altura de la pantalla */
   object-fit: cover;
   object-position: center 15%;
   filter: grayscale(10%);
-}
+}}
 
 .modal-body {
   padding: 28px;
