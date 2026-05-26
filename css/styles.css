@@ -446,7 +446,7 @@ header {
   object-fit: cover;
   object-position: center 15%;
   filter: grayscale(10%);
-}}
+}
 
 .modal-body {
   padding: 28px;
