@@ -86,7 +86,7 @@
     if (data.image) {
       imgEl.src = data.image;
       imgEl.alt = data.name;
-      imgEl.style.display = 'block';
+      imgEl.removeAttribute('style');
     } else {
       imgEl.style.display = 'none';
     }
