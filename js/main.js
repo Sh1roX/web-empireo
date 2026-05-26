@@ -117,7 +117,7 @@ const characterData = {
     alias: 'La Chica de los Libros',
     description:
       'Hija de la General Sorrengail, Violet fue criada para ser escribana, pero el destino —y su madre— la enviaron a Basgiath. Frágil de cuerpo pero de voluntad inquebrantable, víncula con no uno, sino dos dragones en una hazaña sin precedentes, desatando una cadena de secretos que sacudirá a toda Navarre.',
-    image: 'img/violet.webp',
+    image: '/img/violet.webp',
     tags: ['Protagonista', 'Jinete', 'Cuadernos de Basgiath'],
   },
   xaden: {
@@ -125,7 +125,7 @@ const characterData = {
     alias: 'El Comandante de Ala',
     description:
       'Hijo del líder de la última rebelión, Xaden carga desde niño con una marca de rebelde y los secretos más oscuros de Navarre. Su frialdad calculada oculta una lealtad feroz hacia quienes ama. Es el antagonista que se convierte en algo mucho más complicado.',
-    image: 'img/xaden.webp',
+    image: '/img/xaden.webp',
     tags: ['Comandante', 'Jinete', 'Sgaeyl'],
   },
   liam: {
@@ -133,7 +133,7 @@ const characterData = {
     alias: 'El Guardián',
     description:
       'Compañero de cuadrante y guardia asignado por Xaden para proteger a Violet. Su lealtad y buen corazón lo convierten en uno de los personajes más queridos de la saga.',
-    image: 'img/liam.webp',
+    image: '/img/liam.webp',
     tags: ['Jinete', 'Cuadrante de Violet'],
   },
   rhiannon: {
@@ -141,7 +141,7 @@ const characterData = {
     alias: 'Rhi',
     description:
       'La mejor amiga de Violet desde el primer día en Basgiath. Astuta, valiente y con una lealtad que no tiene precio. Su vínculo con Violet es uno de los pilares emocionales de la historia.',
-    image: 'img/rhiannon.webp',
+    image: '/img/rhiannon.webp',
     tags: ['Jinete', 'Mejor amiga'],
   },
   dain: {
@@ -149,7 +149,7 @@ const characterData = {
     alias: 'El Líder de Cuadrante',
     description:
       'Amigo de la infancia de Violet y líder del cuadrante Alas de Cola. Inteligente y protector, aunque sus secretos y su lealtad al sistema lo colocan en tensión permanente con aquellos a quienes quiere.',
-    image: 'img/dain.webp',
+    image: '/img/dain.webp',
     tags: ['Líder de Cuadrante', 'Amigo de la infancia'],
   },
   andarna: {
@@ -157,7 +157,7 @@ const characterData = {
     alias: 'La Dragona Dorada',
     description:
       'La dragona más joven y peculiar de toda Basgiath. Su vínculo con Violet es único e inexplicable. Sus escamas doradas ocultan un poder que aún el mundo no comprende del todo.',
-    image: 'img/andarna.webp',
+    image: '/img/andarna.webp',
     tags: ['Dragona', 'Segundo vínculo de Violet'],
   },
 };
