@@ -396,97 +396,225 @@ header {
   line-height: 1.5;
 }
 
-/* Modal de personaje */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(4px);
-}
-.modal-overlay.active { display: flex; }
-
-.modal {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  max-width: 600px;
-  width: 100%;
-  overflow: hidden;
-  animation: modalIn .3s ease;
-  position: relative;
+/* ============================================ */
+/* LIGHTBOX MODERNO (responsive + animaciones)  */
+/* ============================================ */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 2000;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.25s ease-out;
 }
 
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(.94) translateY(20px); }
-  to   { opacity: 1; transform: scale(1)  translateY(0); }
+.lightbox.active {
+    display: flex;
 }
 
-.modal-close {
-  position: absolute;
-  top: 14px; right: 16px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.6rem;
-  cursor: pointer;
-  line-height: 1;
-  transition: color var(--transition);
-}
-.modal-close:hover { color: #fff; }
-
-.modal-img {
-  display: block;
-  width: 100%;
-  max-height: 40vh;
-  object-fit: contain;
-  background: #080810;
-  filter: grayscale(10%);
+.lightbox-container {
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
+    max-height: 90vh;
+    background: rgba(20, 15, 30, 0.6);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: scaleIn 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
-.modal-body {
-  padding: 28px;
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.modal-body h2 {
-  font-size: 1.6rem;
-  color: var(--accent);
-  margin-bottom: 6px;
+@media (min-width: 768px) {
+    .lightbox-content {
+        flex-direction: row;
+        align-items: stretch;
+        padding: 30px;
+    }
 }
 
-.modal-body .modal-alias {
-  font-style: italic;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  font-size: .95rem;
+/* Imagen */
+#lightbox-img {
+    max-width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    background: #0a0812;
+    transition: transform 0.2s ease;
 }
 
-.modal-body p {
-  color: var(--text);
-  font-size: .98rem;
-  line-height: 1.7;
+@media (min-width: 768px) {
+    #lightbox-img {
+        max-width: 45%;
+        max-height: 70vh;
+        margin-right: 25px;
+    }
 }
 
-.modal-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+/* Texto / Caption */
+.lightbox-caption {
+    flex: 1;
+    color: #f0e6d0;
+    padding: 20px 10px;
+    overflow-y: auto;
+    max-height: 50vh;
 }
 
-.modal-tag {
-  background: rgba(201,168,76,.1);
-  border: 1px solid var(--border);
-  color: var(--accent);
-  font-size: .75rem;
-  letter-spacing: .1em;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-family: 'Cinzel', serif;
+@media (min-width: 768px) {
+    .lightbox-caption {
+        max-height: 70vh;
+        padding: 10px 20px;
+    }
+}
+
+.lightbox-caption h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #d4af37;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.lightbox-caption p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 15px 0;
+}
+
+.lightbox-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.lightbox-tags span {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #e6c87a;
+    letter-spacing: 0.5px;
+}
+
+/* Botones de navegación y cierre */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+    width: 50px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    border-radius: 0 12px 12px 0;
+}
+
+.lightbox-nav:hover {
+    background: rgba(212, 175, 55, 0.8);
+    color: #000;
+}
+
+.lightbox-prev {
+    left: 0;
+    border-radius: 0 12px 12px 0;
+}
+
+.lightbox-next {
+    right: 0;
+    border-radius: 12px 0 0 12px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    z-index: 15;
+    backdrop-filter: blur(4px);
+}
+
+.lightbox-close:hover {
+    background: #d4af37;
+    color: #000;
+    transform: rotate(90deg);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll para el contenido del lightbox en mobile */
+.lightbox-caption::-webkit-scrollbar {
+    width: 4px;
+}
+
+.lightbox-caption::-webkit-scrollbar-track {
+    background: #2a2435;
+    border-radius: 10px;
+}
+
+.lightbox-caption::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
 }
 
 /* ============================================
