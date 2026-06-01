@@ -46,65 +46,124 @@
 
 
 // === Modal de personaje ===
+// === LIGHTBOX MODERNO (con navegación y responsive) ===
 (function () {
-  const overlay = document.getElementById('characterModal');
-  if (!overlay) return;
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
 
-  const closeBtn = overlay.querySelector('.modal-close');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxName = document.getElementById('lightbox-name');
+  const lightboxAlias = document.getElementById('lightbox-alias');
+  const lightboxDescription = document.getElementById('lightbox-description');
+  const lightboxTags = document.getElementById('lightbox-tags');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
 
-  // Abrir modal al hacer click en una card
-  document.querySelectorAll('.character-card[data-modal]').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.dataset.modal;
-      openModal(id);
-    });
-  });
+  let currentCharacterId = null;
+  let characterKeys = [];
 
-  // Cerrar
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
+  function openLightbox(characterId) {
+    const character = characterData[characterId];
+    if (!character) return;
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  function openModal(id) {
-    const data = characterData[id];
-    if (!data) return;
-
-    overlay.querySelector('#modal-name').textContent  = data.name;
-    overlay.querySelector('#modal-alias').textContent = data.alias || '';
-    overlay.querySelector('#modal-desc').textContent  = data.description;
+    currentCharacterId = characterId;
 
     // Imagen
-    const imgEl = overlay.querySelector('#modal-img');
-    if (data.image) {
-      imgEl.src = data.image;
-      imgEl.alt = data.name;
-      imgEl.removeAttribute('style');
+    if (character.image) {
+      lightboxImg.src = character.image;
+      lightboxImg.alt = character.name;
+      lightboxImg.style.display = 'block';
     } else {
-      imgEl.style.display = 'none';
+      lightboxImg.style.display = 'none';
     }
 
-    // Tags
-    const tagsEl = overlay.querySelector('#modal-tags');
-    tagsEl.innerHTML = (data.tags || [])
-      .map(t => `<span class="modal-tag">${t}</span>`)
-      .join('');
+    // Textos
+    lightboxName.textContent = character.name;
+    lightboxAlias.textContent = character.alias || '';
+    lightboxDescription.textContent = character.description || '';
 
-    overlay.classList.add('active');
+    // Tags
+    lightboxTags.innerHTML = '';
+    if (character.tags && character.tags.length) {
+      character.tags.forEach(tag => {
+        const tagSpan = document.createElement('span');
+        tagSpan.textContent = tag;
+        lightboxTags.appendChild(tagSpan);
+      });
+    }
+
+    lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeModal() {
-    overlay.classList.remove('active');
+  function closeLightbox() {
+    lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    currentCharacterId = null;
   }
+
+  function navigateLightbox(direction) {
+    if (!characterKeys.length) return;
+    const currentIndex = characterKeys.indexOf(currentCharacterId);
+    if (currentIndex === -1) return;
+
+    let newIndex;
+    if (direction === 'next') {
+      newIndex = (currentIndex + 1) % characterKeys.length;
+    } else {
+      newIndex = (currentIndex - 1 + characterKeys.length) % characterKeys.length;
+    }
+    openLightbox(characterKeys[newIndex]);
+  }
+
+  // Configurar eventos en las cards
+  function setupLightbox() {
+    const cards = document.querySelectorAll('.character-card[data-modal]');
+    characterKeys = [];
+    
+    cards.forEach(card => {
+      const characterId = card.dataset.modal;
+      if (characterId && characterData[characterId]) {
+        characterKeys.push(characterId);
+        // Remover eventos anteriores y agregar nuevo
+        const newCard = card.cloneNode(true);
+        card.parentNode.replaceChild(newCard, card);
+        newCard.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLightbox(characterId);
+        });
+      }
+    });
+
+    // Si no se encontraron cards con data-modal, usar las keys del objeto
+    if (characterKeys.length === 0) {
+      characterKeys = Object.keys(characterData);
+    }
+
+    // Eventos de los botones
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox('prev'));
+    if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox('next'));
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') navigateLightbox('prev');
+        if (e.key === 'ArrowRight') navigateLightbox('next');
+      }
+    });
+
+    // Cerrar al hacer clic fuera del contenido
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+
+  setupLightbox();
 })();
 
 
