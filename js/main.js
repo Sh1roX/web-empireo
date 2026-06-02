@@ -187,27 +187,46 @@ const characterData = {
       if (e.target === lightbox) closeLightbox();
     });
 
+    // --- Cambiado: ahora solo la imagen abre el lightbox ---
     var cards = document.querySelectorAll('.character-card');
     console.log('Tarjetas encontradas:', cards.length);
     
     for (var i = 0; i < cards.length; i++) {
       var card = cards[i];
       var modalId = card.getAttribute('data-modal');
-      if (modalId) {
-        console.log('Vinculando:', modalId);
-        card.style.cursor = 'pointer';
-        
-        var newCard = card.cloneNode(true);
-        card.parentNode.replaceChild(newCard, card);
-        
-        (function(id) {
-          newCard.addEventListener('click', function(e) {
+      if (!modalId) continue;
+
+      var img = card.querySelector('.character-img-wrap img');
+      if (img) {
+        // estilo y accesibilidad para la imagen
+        img.style.cursor = 'zoom-in';
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Ampliar imagen de ' + (characterData[modalId] ? characterData[modalId].name : 'personaje'));
+
+        (function(id, imageEl) {
+          imageEl.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Click en:', id);
             window.openLightbox(id);
           });
-        })(modalId);
+          imageEl.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.openLightbox(id);
+            }
+          });
+        })(modalId, img);
+      } else {
+        // fallback: si no hay img, la tarjeta sigue siendo clicable
+        card.style.cursor = 'pointer';
+        (function(id, cardEl) {
+          cardEl.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.openLightbox(id);
+          });
+        })(modalId, card);
       }
     }
   }
