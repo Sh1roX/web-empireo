@@ -102,6 +102,7 @@ const characterData = {
     const lightboxAlias = document.getElementById('lightbox-alias');
     const lightboxDescription = document.getElementById('lightbox-description');
     const lightboxTags = document.getElementById('lightbox-tags');
+    const lightboxCaption = document.querySelector('.lightbox-caption');
     const closeBtn = document.getElementById('lightbox-close');
     const prevBtn = document.getElementById('lightbox-prev');
     const nextBtn = document.getElementById('lightbox-next');
@@ -115,11 +116,33 @@ const characterData = {
       
       personajeActual = id;
       
-      if (lightboxImg) {
-        lightboxImg.src = char.image;
-        lightboxImg.alt = char.name;
-        lightboxImg.style.display = 'block';
+      // Primero intenta usar la imagen ya presente en la tarjeta (ruta relativa correcta)
+      let src = char.image;
+      const domImg = document.querySelector('.character-card[data-modal="' + id + '"] .character-img-wrap img');
+      if (domImg) {
+        const attrSrc = domImg.getAttribute('src');
+        if (attrSrc) src = attrSrc;
       }
+
+      if (lightboxImg) {
+        lightboxImg.style.display = 'none';
+        lightboxImg.onerror = function() {
+          lightboxImg.style.display = 'none';
+        };
+        lightboxImg.onload = function() {
+          lightboxImg.style.display = 'block';
+        };
+        lightboxImg.src = src;
+        lightboxImg.alt = char.name;
+      }
+
+      // OCULTAR el bloque de texto para que solo se vea la imagen
+      if (lightboxCaption) {
+        lightboxCaption.style.display = 'none';
+        lightboxCaption.setAttribute('aria-hidden', 'true');
+      }
+
+      // dejar los nodos de texto actualizados por si se necesita mostrarlos posteriormente
       if (lightboxName) lightboxName.textContent = char.name;
       if (lightboxAlias) lightboxAlias.textContent = char.alias || '';
       if (lightboxDescription) lightboxDescription.textContent = char.description || '';
@@ -158,6 +181,11 @@ const characterData = {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
       personajeActual = null;
+      // restaurar la caption para la próxima apertura (si quieres mantenerla oculta, quita estas dos líneas)
+      if (lightboxCaption) {
+        lightboxCaption.style.display = '';
+        lightboxCaption.removeAttribute('aria-hidden');
+      }
     }
 
     if (closeBtn) {
@@ -187,7 +215,7 @@ const characterData = {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // --- Cambiado: ahora solo la imagen abre el lightbox ---
+    // --- Listener en .character-img-wrap ---
     var cards = document.querySelectorAll('.character-card');
     console.log('Tarjetas encontradas:', cards.length);
     
@@ -196,30 +224,28 @@ const characterData = {
       var modalId = card.getAttribute('data-modal');
       if (!modalId) continue;
 
-      var img = card.querySelector('.character-img-wrap img');
-      if (img) {
-        // estilo y accesibilidad para la imagen
-        img.style.cursor = 'zoom-in';
-        img.setAttribute('tabindex', '0');
-        img.setAttribute('role', 'button');
-        img.setAttribute('aria-label', 'Ampliar imagen de ' + (characterData[modalId] ? characterData[modalId].name : 'personaje'));
+      var imgWrap = card.querySelector('.character-img-wrap');
+      if (imgWrap) {
+        imgWrap.style.cursor = 'zoom-in';
+        imgWrap.setAttribute('tabindex', '0');
+        imgWrap.setAttribute('role', 'button');
+        imgWrap.setAttribute('aria-label', 'Ampliar imagen de ' + (characterData[modalId] ? characterData[modalId].name : 'personaje'));
 
-        (function(id, imageEl) {
-          imageEl.addEventListener('click', function(e) {
+        (function(id, wrapEl) {
+          wrapEl.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             window.openLightbox(id);
           });
-          imageEl.addEventListener('keydown', function(e) {
+          wrapEl.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
               window.openLightbox(id);
             }
           });
-        })(modalId, img);
+        })(modalId, imgWrap);
       } else {
-        // fallback: si no hay img, la tarjeta sigue siendo clicable
-        card.style.cursor = 'pointer';
+                card.style.cursor = 'pointer';
         (function(id, cardEl) {
           cardEl.addEventListener('click', function(e) {
             e.preventDefault();
