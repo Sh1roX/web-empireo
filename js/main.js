@@ -85,6 +85,20 @@ const characterData = {
     description: 'La dragona más joven y peculiar de toda Basgiath. Su vínculo con Violet es único e inexplicable. Sus escamas doradas ocultan un poder que aún el mundo no comprende.',
     image: '/web-empireo/img/andarna.webp',
     tags: ['Dragona', 'Segundo vínculo de Violet']
+  },
+  tairn: {
+    name: 'Tairn',
+    alias: 'El Forjador de Rutas',
+    description: 'Explorador veterano de Basgiath, siempre un paso adelante. Su temple frío esconde un espíritu fiel al grupo.',
+    image: '/web-empireo/img/tairn.webp',
+    tags: ['Jinete', 'Explorador']
+  },
+  sgaeyl: {
+    name: 'Sgaeyl',
+    alias: 'Guardiana del Alba',
+    description: 'Sabia y silenciosa, su presencia calma a las fuerzas de Violet. Entre sombras y luz, sus consejos marcan el rumbo.',
+    image: '/web-empireo/img/sgaeyl.webp',
+    tags: ['Aliada', 'Consejera']
   }
 };
 
@@ -107,7 +121,7 @@ const characterData = {
     const prevBtn = document.getElementById('lightbox-prev');
     const nextBtn = document.getElementById('lightbox-next');
 
-    const personajesOrden = ['violet', 'xaden', 'liam', 'rhiannon', 'dain', 'andarna'];
+    const personajesOrden = ['violet', 'xaden', 'liam', 'rhiannon', 'dain', 'tairn', 'sgaeyl', 'andarna'];
     let personajeActual = null;
 
     function mostrarPersonaje(id) {
